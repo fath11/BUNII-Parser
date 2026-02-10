@@ -1,0 +1,65 @@
+<element: {
+Attribute: "Value1",
+Attribute: "Value2",
+Attribute: "Value3", ~This is a comment!~
+intAttrib: 42, ~unlike html or xml, there can be other datatypes than strings!~
+escaped literal: "^{Example!!^}", ~notice how whitespace doesnt matter in attribute names or anything? minimal forced whitespace!~
+Nested example:{
+     Nested1: "value1",
+     Nested2: "value2",
+     Nested3: "value3",
+       NestArray: [1,2,3,4,5,6,7,8,<another_node>
+                                       </node_child/>
+                                   </another_node>
+                                   ]
+     }
+
+     @Repeat%4( ~This repeats these elements 4 times. it is quite useful for compression.~
+         <Child element 1>
+         if Attribute == "value1": ~python syntax for if-else, minus the forced indentation.~
+            </Child element 2/>
+         else:
+             skip
+         </Child element 1>
+     )
+     }>
+    
+     </element>
+    
+</self-closed/> ~self-closed elements start and end with a "/".~
+
+var1 = 5 ~Variables are contained to the location they are defined. if they are defined outside any node, they are global.~
+    
+<sibling element>
+   </expression example:
+       {
+           attribute: 10
+           ~you can use a single dollar sign followed by an attribute name to set a variable to that attribute.~
+           var2 = $attribute
+           ~Specifying 2 percentages before and after an attribute makes it globbal.
+           %%globalattrib: 80%%
+          
+           ~ ".$" and "$." represent the start and end brackets of scripted expressions. ~
+           calculated attrib: .$ (var1*var2) + 70 $.
+           ~This attribute would return as 120.~
+              
+       }/>
+</sibling element>
+
+~lastly, if you wanna use raw data instead of attributes (like linking a json or xml file), use the "#" symbol in a tag.
+All characters are escaped until it reaches a "</#Name here>". If you somehow need that as a literal, you can add an attribute titled "CUSTOMESC:" and whatever you put afterwards will be the new symbol to escape it.~
+
+<#RAW DATA datatype: "Yaml" &CUSTOMESC&:"RAWDATAEND!">
+--- # Sequencer protocols for Laser eye surgery
+- step:  &id001                  # defines anchor label &id001
+   instrument:      Lasik 2000
+   pulseEnergy:     5.4
+   pulseDuration:   12
+   repetition:      1000
+   spotSize:        1mm
+
+RAWDATAEND! </#RAW DATA> ~ if you want to be extra organized, you can also put a tag after a custom escaped literal and it will work the same.~
+
+~im sorry for bringing this into conception.~
+
+
