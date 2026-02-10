@@ -15,6 +15,10 @@
       </another_node>,
     ]
   },
+  </ nodes as attributes what???? />
+}>
+  </ random ahh element: { hello: "world" } />
+
   @Repeat%4( ~This repeats these elements 4 times. it is quite useful for compression.~
     <Child element 1>
       if Attribute == "value1": ~python syntax for if-else, minus the forced indentation.~
@@ -22,11 +26,11 @@
       else:
         skip
     </Child element 1>
-  ),
-}>
+  ), ~you can use Repeat anywhere, except for inside a raw data block~
+
 </element>
     
-</self-closed/> ~self-closed elements start and end with a "/".~
+</ self-closed /> ~self-closed elements start and end with a "/".~
 
 var1 = 5 ~Variables are contained to the location they are defined. if they are defined outside any node, they are global.~
 
